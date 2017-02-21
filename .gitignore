@@ -99,3 +99,15 @@ $RECYCLE.BIN/
 
 # Windows shortcuts
 *.lnk
+
+
+# venv
+.venv
+
+# build
+build
+Output
+
+
+# PyQt ui -> py
+ui_*.py
