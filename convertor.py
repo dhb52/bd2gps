@@ -1,39 +1,24 @@
 # -*- coding: utf-8 -*-
-import json
+
+'''
+GCJ02, WGS84, BD09 bi-directional conversion algorithm
+refer: https://github.com/wandergis/coordTransform_py
+'''
+
 import math
 
-key = 'your key here'  # 这里填写你的高德api的key
+__all__ = [
+    'gcj02tobd09',
+    'bd09togcj02',
+    'wgs84togcj02',
+    'gcj02towgs84',
+]
+
+
 x_pi = 3.14159265358979324 * 3000.0 / 180.0
 pi = 3.1415926535897932384626  # π
 a = 6378245.0  # 长半轴
 ee = 0.00669342162296594323  # 扁率
-
-
-def geocode(address):
-    """
-    利用百度geocoding服务解析地址获取位置坐标
-    :param address:需要解析的地址
-    :return:
-    """
-    geocoding = {'s': 'rsv3',
-                 'key': key,
-                 'city': '全国',
-                 'address': address}
-    res = requests.get(
-        "http://restapi.amap.com/v3/geocode/geo", params=geocoding)
-    if res.status_code == 200:
-        json = res.json()
-        status = json.get('status')
-        count = json.get('count')
-        if status == '1' and int(count) >= 1:
-            geocodes = json.get('geocodes')[0]
-            lng = float(geocodes.get('location').split(',')[0])
-            lat = float(geocodes.get('location').split(',')[1])
-            return [lng, lat]
-        else:
-            return None
-    else:
-        return None
 
 
 def gcj02tobd09(lng, lat):
@@ -144,25 +129,3 @@ def out_of_china(lng, lat):
     :return:
     """
     return not (lng > 73.66 and lng < 135.05 and lat > 3.86 and lat < 53.55)
-
-
-def bd09towgs84(lng, lat):
-    lng, lat = bd09togcj02(lng, lat)
-    return gcj02towgs84(lng, lat)
-
-
-def wgs84tobd09(lng, lat):
-    lng, lat = wgs84togcj02(lng, lat)
-    return gcj02tobd09(lng, lat)
-
-
-# from data import data
-
-def main():
-    with open('output.csv', 'w') as fout:
-        for d in data:
-            coord = bd09towgs84(d[1], d[2])
-            print(d[0], coord[0], coord[1], sep=",", file=fout)
-
-if __name__ == '__main__':
-    main()

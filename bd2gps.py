@@ -1,10 +1,22 @@
 # -*- coding: utf-8 -*-
 
 from ui_main import Ui_Dialog
-
 from PyQt5 import QtWidgets
+from convertor import (
+    bd09togcj02,
+    gcj02towgs84,
+    wgs84togcj02,
+    gcj02tobd09)
 
-from convertor import bd09towgs84, wgs84tobd09
+
+def bd09towgs84(lng, lat):
+    lng, lat = bd09togcj02(lng, lat)
+    return gcj02towgs84(lng, lat)
+
+
+def wgs84tobd09(lng, lat):
+    lng, lat = wgs84togcj02(lng, lat)
+    return gcj02tobd09(lng, lat)
 
 
 class MainDlg(QtWidgets.QDialog, Ui_Dialog):
@@ -21,12 +33,14 @@ class MainDlg(QtWidgets.QDialog, Ui_Dialog):
                 line = line.strip()
                 lng, lat = line.split(",")
                 lng, lat = float(lng.strip()), float(lat.strip())
-                lng, lat = bd09towgs84(
-                    lng, lat) if self.bd2Gps.checkState() else wgs84tobd09(lng, lat)
+                if self.bd2Gps.checkState():
+                    lng, lat = bd09towgs84(lng, lat)
+                else:
+                    lng, lat = wgs84tobd09(lng, lat)
                 self.textEditDst.insertPlainText("%f,%f\n" % (lng, lat))
             except:
                 self.textEditDst.insertPlainText("%s\n" % line)
-            QtWidgets.qApp.processEvents()
+            # QtWidgets.qApp.processEvents()
 
 
 def main():
