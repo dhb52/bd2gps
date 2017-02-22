@@ -6,7 +6,7 @@ build_exe_options = {
     "packages": ["os"],
     "excludes": ["tkinter"],
     "include_files": [
-        # 'app.ico',
+        'app.ico',
     ],
 }
 
@@ -16,8 +16,8 @@ base = None
 if sys.platform == "win32":
     base = "Win32GUI"
 
-setup(name="KML tools",
+setup(name="BD09 WGS84 Convertor",
       version="0.1",
       description="bd2gps",
       options={"build_exe": build_exe_options},
-      executables=[Executable("bd2gps.py", base=base)])
+      executables=[Executable("bd2gps.py", base=base, icon='app.ico')])
