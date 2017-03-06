@@ -24,7 +24,10 @@
       <number>2</number>
      </property>
      <property name="text">
-      <string>&lt;html&gt;&lt;head/&gt;&lt;body&gt;&lt;p&gt;&lt;span style=&quot; font-size:12pt;&quot;&gt;输入经纬度信息，以英文逗号分隔，每行一个经纬度（例如：117.017832,23.690733），点击转换按钮开始。&lt;/span&gt;&lt;/p&gt;&lt;p&gt;&lt;span style=&quot; font-size:12pt; font-weight:600; color:#ff0000;&quot;&gt;坐标转换可能存在个人隐私问题，工具仅供内部交流使用。&lt;/span&gt;&lt;/p&gt;&lt;/body&gt;&lt;/html&gt;</string>
+      <string>&lt;html&gt;&lt;head/&gt;&lt;body&gt;&lt;p&gt;&lt;span style=&quot; font-size:11pt;&quot;&gt;输入经纬度信息，以英文逗号分隔，每行一个经纬度（例如：117.017832,23.690733），点击转换按钮开始。&lt;/span&gt;&lt;/p&gt;&lt;p&gt;&lt;span style=&quot; font-size:11pt;&quot;&gt;百度地图坐标择取：&lt;/span&gt;&lt;a href=&quot;http://api.map.baidu.com/lbsapi/getpoint/index.html&quot;&gt;&lt;span style=&quot; font-size:11pt; text-decoration: underline; color:#0000ff;&quot;&gt;http://api.map.baidu.com/lbsapi/getpoint/index.html&lt;/span&gt;&lt;/a&gt;&lt;/p&gt;&lt;p&gt;&lt;span style=&quot; font-size:11pt; font-weight:600; color:#ff0000;&quot;&gt;坐标转换可能存在个人隐私问题，工具仅供内部交流使用。&lt;/span&gt;&lt;/p&gt;&lt;/body&gt;&lt;/html&gt;</string>
+     </property>
+     <property name="openExternalLinks">
+      <bool>true</bool>
      </property>
     </widget>
    </item>
