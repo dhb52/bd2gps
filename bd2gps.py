@@ -1,7 +1,11 @@
 # -*- coding: utf-8 -*-
 
 from ui_main import Ui_Dialog
-from PyQt5 import QtWidgets
+try:
+    from PyQt5.QtWidgets import (QDialog, QApplication)
+except:
+    from PyQt4.QtGui import (QDialog, QApplication)
+
 from convertor import (
     bd09togcj02,
     gcj02towgs84,
@@ -19,7 +23,7 @@ def wgs84tobd09(lng, lat):
     return gcj02tobd09(lng, lat)
 
 
-class MainDlg(QtWidgets.QDialog, Ui_Dialog):
+class MainDlg(QDialog, Ui_Dialog):
     def __init__(self, parent=None):
         super(MainDlg, self).__init__(parent)
         self.setupUi(self)
@@ -46,7 +50,7 @@ class MainDlg(QtWidgets.QDialog, Ui_Dialog):
 def main():
     import sys
 
-    app = QtWidgets.QApplication(sys.argv)
+    app = QApplication([])
     dialog = MainDlg()
     dialog.show()
     sys.exit(app.exec_())
