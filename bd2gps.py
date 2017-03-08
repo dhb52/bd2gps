@@ -3,8 +3,10 @@
 from ui_main import Ui_Dialog
 try:
     from PyQt5.QtWidgets import (QDialog, QApplication)
+    from ui_main5 import Ui_Dialog
 except ImportError:
     from PyQt4.QtGui import (QDialog, QApplication)
+    from ui_main4 import Ui_Dialog
 
 from convertor import (
     bd09togcj02,
