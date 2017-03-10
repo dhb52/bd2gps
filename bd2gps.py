@@ -1,9 +1,9 @@
 # -*- coding: utf-8 -*-
 
-
 try:
     from PyQt5.QtWidgets import (QDialog, QApplication)
     from ui_main5 import Ui_Dialog
+
     def unicode(s):
         return s
 except ImportError:
