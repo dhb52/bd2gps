@@ -24,3 +24,7 @@ jobs:
       run: |
         python -m pip install --upgrade pip
         if [ -f requirements.txt ]; then pip install -r requirements.txt; fi
+    - name: build
+      run: |
+        pyuic5 ui_main.ui -o ui_main5.pyw
+        python cx_freeze.py build
