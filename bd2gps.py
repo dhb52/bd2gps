@@ -1,8 +1,9 @@
 # -*- coding: utf-8 -*-
-
+import sys
 try:
     from PyQt5.QtWidgets import (QDialog, QApplication)
     from ui_main5 import Ui_Dialog
+    from PyQt5.QtGui import QIcon
 
     def unicode(s):
         return s
@@ -10,11 +11,14 @@ except ImportError:
     from PyQt4.QtGui import (QDialog, QApplication)
     from ui_main4 import Ui_Dialog
 
+
 from convertor import (
     bd09togcj02,
     gcj02towgs84,
     wgs84togcj02,
     gcj02tobd09)
+
+import resources_rc
 
 
 def bd09towgs84(lng, lat):
@@ -31,6 +35,7 @@ class MainDlg(QDialog, Ui_Dialog):
     def __init__(self, parent=None):
         super(MainDlg, self).__init__(parent)
         self.setupUi(self)
+        self.setWindowIcon(QIcon(':/app.ico'))
 
     def start_convert(self):
         self.textEditDst.clear()
@@ -51,14 +56,8 @@ class MainDlg(QDialog, Ui_Dialog):
             # QtWidgets.qApp.processEvents()
 
 
-def main():
-    import sys
-
+if __name__ == '__main__':
     app = QApplication([])
     dialog = MainDlg()
     dialog.show()
     sys.exit(app.exec_())
-
-
-if __name__ == '__main__':
-    main()
