@@ -102,7 +102,7 @@ $RECYCLE.BIN/
 
 
 # venv
-.venv
+venv
 
 # build
 build
@@ -111,3 +111,5 @@ Output
 
 # PyQt ui -> py
 ui_*.py
+ui_*.pyw
+resources_rc.py
