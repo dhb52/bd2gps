@@ -28,4 +28,4 @@ jobs:
       run: |
         pyuic5 ui_main.ui -o ui_main5.pyw
         pyrcc5 -o resources_rc.py resources.rc
-        pyinstaller bd2gps.py --icon app.ico -F --add-data "app.ico;."
+        pyinstaller bd2gps.py --icon app.ico -F
